@@ -1,0 +1,52 @@
+#+TITLE: Readme
+
+* Personal shell scripts
+The following is a collection of the shell scripts I use on a daily basis.
+
+
+** batalert
+Should run in background. Will echo a message when battery reaches a certain level and will show a notification if it goes below some other level.
+** devium
+Opens a chromium browser in "fire and forget" mode. Every time it starts it will load the saved profile unless a 'keep' option is used.
+** gen
+Generates a tern-project or a ctags file. I'm not currently using it, but I could use it to generate a ~.projectile~ file or a ~/.dir-locals~...
+** genially-shell
+Opens a shell with docker-compose and other stuff I use for work.
+** hess
+A shortcut to use ~less~ with ~highlight~ to see sources. I may change to ~bat~ though so this may fly away (but it's also nice!)
+** invert_colors
+Inverts the colors of my screen. I stop and start ~redshift~ to prevent it from reseting the invertion, maybe there's a better way though...
+** jmux
+My tmux launcher (I love this thing :heart:). It will suggest my tmuxp saved (or running) sessions so that I can quickly connect to them.
+** nginx
+A little shortcut to launch an nginx server with a certain directory as root.
+** notido
+Another useful thingy. Running ~notido yarn~ will show a notification when the command is dome (so that I don't have to be cheking)
+** now-playing
+This outputs the current Artist and Song from Spotify
+** rofiemoji
+An emoji picker using https://github.com/nkoehring/rofiemoji.git
+** rofiopen
+A file opener with ~rofi~ and ~rifle~
+** rofisxiv
+An image opener with ~rofi~ and ~sxiv~
+** rofivim
+A text file opener with ~rofi~ and ~vim~
+** shine
+Uses brightness
+** showme
+Opens my webcam with ~mpv~ to show my face while sharing screen.
+** smod
+Changes between some screen configurations (not using it too much these days with my automatic config)
+** sndsel
+Change between soundcard devices
+** sshot
+Take a screenshot with ~scrot~
+** terminal
+Launch my terminal (st in this case)
+** totouch
+Toggle my touchscreen
+** trans
+Google translate from git.io/translate with some additional comments
+** yee
+A script to control my home lights. Uses the great https://github.com/hphde/yeelight-shell-scripts

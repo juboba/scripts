@@ -1,0 +1,19 @@
+#!/bin/sh
+
+TOUCHSCREEN_ID="ELAN2933:00 04F3:2933"
+
+HAS_TOUCHSCREEN=$(xinput list | grep "$TOUCHSCREEN_ID" | wc -l)
+
+if ([ $HAS_TOUCHSCREEN -eq 0 ])
+then
+  echo "Fatal Error: Touchscreen \"$TOUCHSCREEN_ID\" was not found!"
+  exit 1
+fi
+
+CURRENT_STATUS=$(xinput list-props "$TOUCHSCREEN_ID" | grep "Device Enabled" | grep -o "[01]$")
+
+case $1 in
+  --off) xinput disable "$TOUCHSCREEN_ID" ;;
+  --on) xinput enable "$TOUCHSCREEN_ID" ;;
+  *) [ $CURRENT_STATUS -eq 1 ] && $0 --off || $0 --on ;;
+esac

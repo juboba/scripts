@@ -1,0 +1,20 @@
+#!/bin/sh
+
+case $1 in
+  brightness-up)
+    brightness + eDP-1
+    notify-send $(brightness  | tail -1 | awk '{ print $2" "$3 "\n" $6"       "$7 }' | grep brightness)
+    ;;
+  brightness-down)
+    brightness - eDP-1
+    notify-send $(brightness  | tail -1 | awk '{ print $2" "$3 "\n" $6"       "$7 }' | grep brightness)
+    ;;
+  temp-up)
+    brightness + eDP-1 --temp
+    notify-send $(brightness  | tail -1 | awk '{ print $2" "$3 "\n" $6"       "$7 }' | grep temp)
+    ;;
+  temp-down)
+    brightness - eDP-1 --temp
+    notify-send $(brightness  | tail -1 | awk '{ print $2" "$3 "\n" $6"       "$7 }' | grep temp)
+    ;;
+esac

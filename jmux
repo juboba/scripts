@@ -1,0 +1,34 @@
+#/bin/sh
+# @author: juboba@gmail.com
+# This is jmux. My script to automatically attach to my tmux sessions
+# 
+
+type tmux > /dev/null 2>&1 || (echo "Dependency not found: 'tmux'" && exit 1)
+type tmuxp > /dev/null 2>&1 || (echo "Dependency not found: 'tmuxp'" && exit 1)
+type fzy > /dev/null 2>&1 || (echo "Dependency not found: 'fzy'" && exit 1)
+
+# The working directory:
+WD=~/.tmuxp
+
+SESSIONS_RUNNING=$(tmux ls 2> /dev/null | wc -l)
+
+getSessionList () {
+  cd $WD
+  ls | xargs grep -s session_name | sed -e "s/\(.*\):session_name: \(.*\)/\2 (\1)/" | fzy
+  cd - > /dev/null 2>&1
+}
+
+# If there are sessions running and we're not in any of them:
+if [ $SESSIONS_RUNNING -ge 1 -a -z "$TMUX" ]; then
+  # then attach to one of those sessions
+  if [ $SESSIONS_RUNNING = 1 ]; then
+    tmux a
+  else
+    SESSION_FILE=$(tmux ls | cut -d: -f1 | fzy)
+    [ "$SESSION_FILE" ] && tmux a -t $SESSION_FILE
+  fi
+else
+  SESSION_FILE=$(getSessionList | sed -e "s/.* (\(.*\))/\1/")
+  echo $SESSION_FILE
+  [ "$SESSION_FILE" ] && tmuxp load -y $WD/$SESSION_FILE # else load the project
+fi

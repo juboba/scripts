@@ -1,0 +1,12 @@
+#!/bin/sh
+SCREENSHOT_OPTIONS="--line style=dash --select --freeze"
+TMP_FILE="/tmp/sshot_tmp.png"
+SCREENSHOT_CMD="scrot $SCREENSHOT_OPTIONS $HOME/Pictures/Screenshots/$(date -Iseconds).png"
+FULL_SCREENSHOT_CMD="scrot $HOME/Pictures/Screenshots/$(date -Iseconds).png"
+VOLATILE_SCREENSHOT_CMD="scrot $SCREENSHOT_OPTIONS $TMP_FILE"
+
+case $1 in
+  -f) $FULL_SCREENSHOT_CMD ;;
+  -t) $VOLATILE_SCREENSHOT_CMD && xclip -selection clipboard -t image/png -i $TMP_FILE && rm $TMP_FILE ;;
+  *) $SCREENSHOT_CMD ;;
+esac

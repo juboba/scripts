@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if $*; then
+  notify-send "Success!" "Command:\n $* \n finnished successfully!"
+	mpv ~/Sounds/command_done.ogg &>> /dev/null
+  # beep
+else
+  notify-send "Error!" "Command:\n $* \n has failed."
+	mpv ~/Sounds/command_failed.ogg &>> /dev/null
+  # beep
+fi

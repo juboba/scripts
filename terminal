@@ -1,4 +1,3 @@
 #!/bin/sh
 
-#gnome-terminal --hide-menubar $*
 st $*

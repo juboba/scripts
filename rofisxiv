@@ -1,9 +1,6 @@
 #!/bin/sh
 
-FILE=$(rg --files 2> /dev/null \
-  | sed -e "s/\(.*\)\/.*$/\1/" \
-  | sort \
-  | uniq \
+FILE=$(fd \
   | rofi -dmenu -matching fuzzy -p 'Open with Sxiv' -sort -levenshtein-sort)
 
 echo $FILE

@@ -30,13 +30,13 @@ function keep() {
 cd $DIR
 
 case "$1" in
-  help) echo -e "Usage:\n\
+  keep) keep ;;
+  save) saveProfile ;;
+  "") startFresh ;;
+  *) echo -e "Usage:\n\
   $CMD    restore saved profile and start browser\n\n\
   $CMD [keep|save|help]\n\n\
   keep    use last version (don't reset profile)\n\
   save    save current profile\n\
   help    show this help";;
-  keep) keep ;;
-  save) saveProfile ;;
-  *) startFresh ;;
 esac

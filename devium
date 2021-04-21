@@ -7,7 +7,7 @@ BROWSER="chromium-browser --auto-open-devtools-for-tabs"
 CMD=$(basename $0)
 
 # Start fresh
-function startFresh() {
+startFresh() {
   echo "restoring saved profile and launching browser..."
   rm -rf $DEV_PROFILE
   [ -f $DEV_PROFILE_BACKUP ] && tar xf $DEV_PROFILE_BACKUP -C $HOME/tmp
@@ -15,14 +15,14 @@ function startFresh() {
 }
 
 # Save current profile
-function saveProfile() {
+saveProfile() {
   echo "saving current profile..."
   [ -f $DEV_PROFILE_BACKUP ] && mv $DEV_PROFILE_BACKUP $DIR/old.tar.gz
   tar zcf $DEV_PROFILE_BACKUP $DEV_PROFILE
 }
 
 # Run without resetting profile:
-function keep() {
+keep() {
   echo "launching with saved profile..."
   $BROWSER --user-data-dir=$DEV_PROFILE #--disable-web-security
 }

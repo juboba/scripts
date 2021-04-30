@@ -1,1 +1,0 @@
-rofi -modi 'run,drun,emoji:~/Repositories/rofiemoji/rofiemoji.sh' -show emoji
